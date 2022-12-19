@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Select User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none">
+          <ion-searchbar #q (ionCancel)="clear()" [showCancelButton]="true" (keypress)="search(q.value,$event)">
+          </ion-searchbar>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <p *ngIf="!ready" class="ion-text-center">
+          <ion-spinner name="dots"></ion-spinner>
+        </p>
+        <p *ngIf="ready && alluser_listing.length == 0" style="text-align: center; margin: 0">
+          No user with this Account exists
+        </p>
+        <ion-list>
+          <ion-item *ngFor="let user of alluser_listing; let i = index" lines="none">
+            <ion-label>
+              <h3>{{user.display_name}}</h3>
+              <p>{{user.email}}</p>
+            </ion-label>
+
+            <ion-radio slot="end" mode="md" value="{{user.user_id}}" (click)="select_user(user)"></ion-radio>
+          </ion-item>
+          <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

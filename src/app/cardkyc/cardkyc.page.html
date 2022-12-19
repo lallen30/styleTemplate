@@ -1,0 +1,586 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon
+      slot="start"
+      name="arrow-back-outline"
+      (click)="back()"
+    ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="kycdetail">
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="12" class="billing-address ion-no-padding">
+          <div class="billing-parameter">
+            <h2>Bank Account Information</h2>
+            <ion-label>Routing Number</ion-label>
+            <ion-input
+              type="number"
+              formControlName="routing_number"
+            ></ion-input>
+            <ion-label>Account Number</ion-label>
+            <ion-input type="text" formControlName="account_number"></ion-input>
+            <ion-label>Account Holder Name</ion-label>
+            <ion-input
+              type="text"
+              formControlName="account_holder_name"
+            ></ion-input>
+            <ion-label>Business website</ion-label>
+            <ion-input
+              type="text"
+              formControlName="business_website"
+              disabled
+            ></ion-input>
+            <ion-label>D.O.B</ion-label>
+            <ion-input
+              type="text"
+              placeholder="D.O.B MM/DD/YYYY"
+              [brmasker]="{mask:'00/00/0000', len:10}"
+              formControlName="date_of_birth"
+            ></ion-input>
+            <ion-label>Phone</ion-label>
+            <ion-input type="number" formControlName="phone"></ion-input>
+            <ion-label>Last 4 digits of SSN</ion-label>
+            <ion-input type="text" formControlName="pin_ssn"></ion-input>
+            <div class="input-division">
+              <span class="half-input">
+                <ion-label>City</ion-label>
+                <ion-input type="text" formControlName="city"></ion-input>
+              </span>
+              <span class="half-input">
+                <ion-label>Zip code</ion-label>
+                <ion-input type="number" formControlName="zipcode"></ion-input>
+              </span>
+            </div>
+            <ion-label>State Code</ion-label>
+            <ion-select formControlName="state_code">
+              <ion-select-option value="AL">AL</ion-select-option>
+              <ion-select-option value="AK">AK</ion-select-option>
+              <ion-select-option value="AZ">AZ</ion-select-option>
+              <ion-select-option value="AR">AR</ion-select-option>
+              <ion-select-option value="CA">CA</ion-select-option>
+              <ion-select-option value="CO">CO</ion-select-option>
+              <ion-select-option value="CT">CT</ion-select-option>
+              <ion-select-option value="DE">DE</ion-select-option>
+              <ion-select-option value="DC">DC</ion-select-option>
+              <ion-select-option value="FL">FL</ion-select-option>
+              <ion-select-option value="GA">GA</ion-select-option>
+              <ion-select-option value="HI">HI</ion-select-option>
+              <ion-select-option value="ID">ID</ion-select-option>
+              <ion-select-option value="IL">IL</ion-select-option>
+              <ion-select-option value="IN">IN</ion-select-option>
+              <ion-select-option value="IA">IA</ion-select-option>
+              <ion-select-option value="KS">KS</ion-select-option>
+              <ion-select-option value="KY">KY</ion-select-option>
+              <ion-select-option value="LA">LA</ion-select-option>
+              <ion-select-option value="ME">ME</ion-select-option>
+              <ion-select-option value="MD">MD</ion-select-option>
+              <ion-select-option value="MA">MA</ion-select-option>
+              <ion-select-option value="MI">MI</ion-select-option>
+              <ion-select-option value="MN">MN</ion-select-option>
+              <ion-select-option value="MS">MS</ion-select-option>
+              <ion-select-option value="MO">MO</ion-select-option>
+              <ion-select-option value="MT">MT</ion-select-option>
+              <ion-select-option value="NE">NE</ion-select-option>
+              <ion-select-option value="NV">NV</ion-select-option>
+              <ion-select-option value="NH">NH</ion-select-option>
+              <ion-select-option value="NJ">NJ</ion-select-option>
+              <ion-select-option value="NM">NM</ion-select-option>
+              <ion-select-option value="NY">NY</ion-select-option>
+              <ion-select-option value="NC">NC</ion-select-option>
+              <ion-select-option value="ND">ND</ion-select-option>
+              <ion-select-option value="OH">OH</ion-select-option>
+              <ion-select-option value="OK">OK</ion-select-option>
+              <ion-select-option value="OR">OR</ion-select-option>
+              <ion-select-option value="PA">PA</ion-select-option>
+              <ion-select-option value="RI">RI</ion-select-option>
+              <ion-select-option value="SC">SC</ion-select-option>
+              <ion-select-option value="SD">SD</ion-select-option>
+              <ion-select-option value="TN">TN</ion-select-option>
+              <ion-select-option value="TX">TX</ion-select-option>
+              <ion-select-option value="UT">UT</ion-select-option>
+              <ion-select-option value="VT">VT</ion-select-option>
+              <ion-select-option value="VA">VA</ion-select-option>
+              <ion-select-option value="WA">WA</ion-select-option>
+              <ion-select-option value="WV">WV</ion-select-option>
+              <ion-select-option value="WI">WI</ion-select-option>
+              <ion-select-option value="WY">WY</ion-select-option>
+            </ion-select>
+            <ion-label>Address1</ion-label>
+            <ion-input type="text" formControlName="address1"></ion-input>
+            <ion-label>Address2</ion-label>
+            <ion-input type="text" formControlName="address2"></ion-input>
+            <ion-label>Merchant Category</ion-label>
+            <ion-select formControlName="mcc">
+              <ion-select-option value="7623"
+                >A/C, Refrigeration Repair</ion-select-option
+              >
+              <ion-select-option value="8931"
+                >Accounting/Bookkeeping Services</ion-select-option
+              >
+              <ion-select-option value="7311"
+                >Advertising Services</ion-select-option
+              >
+              <ion-select-option value="0763"
+                >Agricultural Cooperative</ion-select-option
+              >
+              <ion-select-option value="4511"
+                >Airlines, Air Carriers</ion-select-option
+              >
+              <ion-select-option value="4582"
+                >Airports, Flying Fields</ion-select-option
+              >
+              <ion-select-option value="4119"
+                >Ambulance Services</ion-select-option
+              >
+              <ion-select-option value="7996"
+                >Amusement Parks/Carnivals</ion-select-option
+              >
+              <ion-select-option value="5937"
+                >Antique Reproductions</ion-select-option
+              >
+              <ion-select-option value="5932">Antique Shops</ion-select-option>
+              <ion-select-option value="7998">Aquariums</ion-select-option>
+              <ion-select-option value="8911"
+                >Architectural/Surveying Services</ion-select-option
+              >
+              <ion-select-option value="5971"
+                >Art Dealers and Galleries
+              </ion-select-option>
+              <ion-select-option value="5970"
+                >Artists Supply and Craft Shops</ion-select-option
+              >
+              <ion-select-option value="7531"
+                >Auto Body Repair Shops</ion-select-option
+              >
+              <ion-select-option value="7535"
+                >Auto Paint Shops</ion-select-option
+              >
+              <ion-select-option value="7538"
+                >Auto Service Shops</ion-select-option
+              >
+              <ion-select-option value="5531"
+                >Auto and Home Supply Stores
+              </ion-select-option>
+              <ion-select-option value="6011"
+                >Automated Cash Disburse</ion-select-option
+              >
+              <ion-select-option value="5542"
+                >Automated Fuel Dispensers</ion-select-option
+              >
+              <ion-select-option value="8675"
+                >Automobile Associations
+              </ion-select-option>
+              <ion-select-option value="5533"
+                >Automotive Parts and Accessories Stores
+              </ion-select-option>
+              <ion-select-option value="5532"
+                >Automotive Tire Stores</ion-select-option
+              >
+              <ion-select-option value="9223"
+                >Bail and Bond Payments</ion-select-option
+              >
+              <ion-select-option value="5462">Bakeries</ion-select-option>
+              <ion-select-option value="7929"
+                >Bands, Orchestras
+              </ion-select-option>
+              <ion-select-option value="7230"
+                >Barber and Beauty Shops
+              </ion-select-option>
+              <ion-select-option value="7995"
+                >Betting/Casino Gambling
+              </ion-select-option>
+              <ion-select-option value="5940">Bicycle Shops </ion-select-option>
+              <ion-select-option value="7932"
+                >Billiard/Pool Establishments
+              </ion-select-option>
+              <ion-select-option value="5551">Boat Dealers </ion-select-option>
+              <ion-select-option value="4457"
+                >Boat Rentals and Leases
+              </ion-select-option>
+              <ion-select-option value="5942">Book Stores </ion-select-option>
+              <ion-select-option value="5192"
+                >Books, Periodicals, and Newspapers
+              </ion-select-option>
+              <ion-select-option value="7933"
+                >Bowling Alleys
+              </ion-select-option>
+              <ion-select-option value="4131">Bus Lines </ion-select-option>
+              <ion-select-option value="8244"
+                >Business/Secretarial Schools
+              </ion-select-option>
+              <ion-select-option value="7278"
+                >Buying/Shopping Services
+              </ion-select-option>
+              <ion-select-option value="4899"
+                >Cable, Satellite, and Other Pay Television and Radio
+              </ion-select-option>
+              <ion-select-option value="5946"
+                >Camera and Photographic Supply Stores
+              </ion-select-option>
+              <ion-select-option value="5441"
+                >Candy, Nut, and Confectionery Stores
+              </ion-select-option>
+              <ion-select-option value="7512"
+                >Car Rental Agencies
+              </ion-select-option>
+              <ion-select-option value="7542">Car Washes </ion-select-option>
+              <ion-select-option value="5511"
+                >Car and Truck Dealers (New & Used)</ion-select-option
+              >
+              <ion-select-option value="5521"
+                >Car and Truck Dealers (Used Only)</ion-select-option
+              >
+              <ion-select-option value="1750"
+                >Carpentry Services
+              </ion-select-option>
+              <ion-select-option value="7217"
+                >Carpet/Upholstery Cleaning
+              </ion-select-option>
+              <ion-select-option value="5811">Caterers</ion-select-option>
+              <ion-select-option value="8398"
+                >Charitable and Social Service Organizations -
+                Fundraising</ion-select-option
+              >
+              <ion-select-option value="5169"
+                >Chemicals and Allied Products (Not Elsewhere
+                Classified)</ion-select-option
+              >
+              <ion-select-option value="8351"
+                >Child Care Services
+              </ion-select-option>
+              <ion-select-option value="5641"
+                >Childrens and Infants Wear Stores
+              </ion-select-option>
+              <ion-select-option value="8049"
+                >Chiropodists, Podiatrists
+              </ion-select-option>
+              <ion-select-option value="8041">Chiropractors</ion-select-option>
+              <ion-select-option value="5993"
+                >Cigar Stores and Stands
+              </ion-select-option>
+              <ion-select-option value="8641"
+                >Civic, Social, Fraternal Associations
+              </ion-select-option>
+              <ion-select-option value="7349"
+                >Cleaning and Maintenance
+              </ion-select-option>
+              <ion-select-option value="7296"
+                >Clothing Rental
+              </ion-select-option>
+              <ion-select-option value="8220"
+                >Colleges, Universities
+              </ion-select-option>
+              <ion-select-option value="5046"
+                >Commercial Equipment (Not Elsewhere Classified)
+              </ion-select-option>
+              <ion-select-option value="5139"
+                >Commercial Footwear
+              </ion-select-option>
+              <ion-select-option value="7333"
+                >Commercial Photography, Art and Graphics
+              </ion-select-option>
+              <ion-select-option value="4111"
+                >Commuter Transport, Ferries
+              </ion-select-option>
+              <ion-select-option value="4816"
+                >Computer Network Services
+              </ion-select-option>
+              <ion-select-option value="7372"
+                >Computer Programming
+              </ion-select-option>
+              <ion-select-option value="7379"
+                >Computer Repair
+              </ion-select-option>
+              <ion-select-option value="5734"
+                >Computer Software Stores
+              </ion-select-option>
+              <ion-select-option value="5045"
+                >Computers, Peripherals, and Software
+              </ion-select-option>
+              <ion-select-option value="1771"
+                >Concrete Work Services
+              </ion-select-option>
+              <ion-select-option value="5039"
+                >Construction Materials (Not Elsewhere Classified)
+              </ion-select-option>
+              <ion-select-option value="7392"
+                >Consulting, Public Relations
+              </ion-select-option>
+              <ion-select-option value="8241"
+                >Correspondence Schools
+              </ion-select-option>
+              <ion-select-option value="5977"
+                >Cosmetic Stores
+              </ion-select-option>
+              <ion-select-option value="7277"
+                >Counseling Services
+              </ion-select-option>
+              <ion-select-option value="7997">Country Clubs </ion-select-option>
+              <ion-select-option value="4215"
+                >Courier Services
+              </ion-select-option>
+              <ion-select-option value="9211"
+                >Court Costs, Including Alimony and Child Support - Courts of
+                Law
+              </ion-select-option>
+              <ion-select-option value="7321"
+                >Credit Reporting Agencies
+              </ion-select-option>
+              <ion-select-option value="4411">Cruise Lines </ion-select-option>
+              <ion-select-option value="5451"
+                >Dairy Products Stores
+              </ion-select-option>
+              <ion-select-option value="7911"
+                >Dance Hall, Studios, Schools
+              </ion-select-option>
+              <ion-select-option value="7273"
+                >Dating/Escort Services
+              </ion-select-option>
+              <ion-select-option value="8021"
+                >Dentists, Orthodontists
+              </ion-select-option>
+              <ion-select-option value="5311"
+                >Department Stores
+              </ion-select-option>
+              <ion-select-option value="7393"
+                >Detective Agencies
+              </ion-select-option>
+              <ion-select-option value="5815"
+                >Digital Goods Media – Books, Movies, Music
+              </ion-select-option>
+              <ion-select-option value="5817"
+                >Digital Goods – Applications (Excludes Games)
+              </ion-select-option>
+              <ion-select-option value="5816"
+                >Digital Goods – Games
+              </ion-select-option>
+              <ion-select-option value="5818"
+                >Digital Goods – Large Digital Goods Merchant
+              </ion-select-option>
+              <ion-select-option value="5964"
+                >Direct Marketing - Catalog Merchant
+              </ion-select-option>
+              <ion-select-option value="5965"
+                >Direct Marketing - Combination Catalog and Retail Merchant
+              </ion-select-option>
+              <ion-select-option value="5967"
+                >Direct Marketing - Inbound Telemarketing
+              </ion-select-option>
+              <ion-select-option value="5960"
+                >Direct Marketing - Insurance Services
+              </ion-select-option>
+              <ion-select-option value="5969"
+                >Direct Marketing - Other
+              </ion-select-option>
+              <ion-select-option value="5966"
+                >Direct Marketing - Outbound Telemarketing
+              </ion-select-option>
+              <ion-select-option value="5968"
+                >Direct Marketing - Subscription
+              </ion-select-option>
+              <ion-select-option value="5962"
+                >Direct Marketing - Travel
+              </ion-select-option>
+              <ion-select-option value="5310"
+                >Discount Stores
+              </ion-select-option>
+              <ion-select-option value="8011">Doctors</ion-select-option>
+              <ion-select-option value="5963"
+                >Door-To-Door Sales
+              </ion-select-option>
+              <ion-select-option value="5714"
+                >Drapery, Window Covering, and Upholstery Stores
+              </ion-select-option>
+              <ion-select-option value="5813"
+                >Drinking Places
+              </ion-select-option>
+              <ion-select-option value="5912"
+                >Drug Stores and Pharmacies
+              </ion-select-option>
+              <ion-select-option value="5122"
+                >Drugs, Drug Proprietaries, and Druggist Sundries
+              </ion-select-option>
+              <ion-select-option value="7216">Dry Cleaners </ion-select-option>
+              <ion-select-option value="5099"
+                >Durable Goods (Not Elsewhere Classified)
+              </ion-select-option>
+              <ion-select-option value="5309"
+                >Duty Free Stores
+              </ion-select-option>
+              <ion-select-option value="5812"
+                >Eating Places, Restaurants
+              </ion-select-option>
+              <ion-select-option value="8299"
+                >Educational Services
+              </ion-select-option>
+              <ion-select-option value="5997"
+                >Electric Razor Stores
+              </ion-select-option>
+              <ion-select-option value="5065"
+                >Electrical Parts and Equipment
+              </ion-select-option>
+              <ion-select-option value="1731"
+                >Electrical Services
+              </ion-select-option>
+              <ion-select-option value="7622"
+                >Electronics Repair Shops
+              </ion-select-option>
+              <ion-select-option value="5732"
+                >Electronics Stores
+              </ion-select-option>
+              <ion-select-option value="8211"
+                >Elementary, Secondary Schools
+              </ion-select-option>
+              <ion-select-option value="7361"
+                >Employment/Temp Agencies
+              </ion-select-option>
+              <ion-select-option value="7394"
+                >Equipment Rental
+              </ion-select-option>
+              <ion-select-option value="7342"
+                >Exterminating Services
+              </ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+              <ion-select-option value=""></ion-select-option>
+            </ion-select>
+            <ion-label
+              >Upload the front and back of a valid drivers license. This is
+              required by Stripe payment gateway by law to verify user
+              identity.</ion-label
+            >
+            <div class="upload-photo">
+              <section>
+                <span *ngIf="imagefrontadd">
+                  <img [src]="getImgContent()" alt="" />
+                </span>
+                <ion-button
+                  *ngIf="!imagefrontadd"
+                  expand="block"
+                  (click)="selectImage('front')"
+                  >Front Photo</ion-button
+                >
+              </section>
+              <section>
+                <span *ngIf="imagebackadd">
+                  <img [src]="getImgContent1()" alt="" />
+                </span>
+                <ion-button
+                  *ngIf="!imagebackadd"
+                  expand="block"
+                  (click)="selectImage1('back')"
+                  >Back Photo</ion-button
+                >
+              </section>
+            </div>
+          </div>
+          <div class="action-btn">
+            <ion-button
+              expand="block"
+              [disabled]="!kycdetail.valid"
+              (click)="submit(kycdetail.value)"
+              >Continue</ion-button
+            >
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

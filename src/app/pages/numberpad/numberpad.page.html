@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="action_type == 'send'">Send Funds</ion-title>
+    <ion-title *ngIf="action_type == 'request'">Request funds</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+    <ion-label>
+      <ion-text class="ion-text-center">
+        <h1 style="font-size: 250%; font-weight: 500">{{number | currency}}</h1>
+      </ion-text>
+    </ion-label>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col> <!-- gap to left of keypad -->
+      <ion-col size="auto">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="press('1')" size="large">1</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('2')" size="large">2</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('3')" size="large">3</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="press('4')" size="large">4</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('5')" size="large">5</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('6')" size="large">6</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="press('7')" size="large">7</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('8')" size="large">8</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('9')" size="large">9</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button (click)="press('.')" size="large">.</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press('0')" size="large">0</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="press_backspace()" size="large">
+                <ion-icon size="small" name="backspace"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-col>
+      <ion-col></ion-col><!-- gap to right of keypad -->
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12" class="mt-20" *ngIf="action_type=='send'">
+        <p>Select A card</p>
+        <ion-item *ngIf="ready" lines="none" class="item_field">
+          <ion-select (ionChange)="change_payment_sources($event)">
+            <ion-select-option value="wallet">Wallet({{wallet_balance | currency}})</ion-select-option>
+            <ion-select-option *ngFor="let item of cards; let i = index;" value="{{i}}">{{item.name}}
+              ****-****-****-{{item.last4}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <p *ngIf="payment_sources == 'wallet'" style="margin: 5px">
+          Receiver will receive amount in their wallet.
+        </p>
+        <p *ngIf="!ready" class="ion-text-center">
+          <ion-spinner></ion-spinner>
+        </p>
+        <p *ngIf="ready && cards.length == 0 && payment_sources == 'stripe'">
+          In order to send money please add card.
+        </p>
+      </ion-col>
+
+      <ion-col size="12" class="mt-20">
+        <p>To</p>
+        <ion-item lines="none" class="item_field" (click)="selectUser()">
+          <ion-label>
+            <ion-text *ngIf="selected_user">{{selected_user.display_name}}</ion-text>
+          </ion-label>
+          <ion-icon name="search" slot="end" size="small"></ion-icon>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="mt-20">
+        <p>For</p>
+        <ion-item lines="none" class="item_field">
+          <ion-textarea rows="5" [(ngModel)]="description" placeholder="Enter more information here..."></ion-textarea>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button *ngIf="action_type=='send'" (click)="Preview()" expand="block" class="theme-fill-btn mt-20 mb-20"
+          [disabled]="number=='' || number=='0' || selected_user.length==0 || payment_sources == '' ">Next</ion-button>
+        <ion-button *ngIf="action_type=='request'" (click)="Preview()" expand="block" class="theme-fill-btn mt-20 mb-20"
+          [disabled]="number=='' || number=='0' || selected_user.length==0">Next</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

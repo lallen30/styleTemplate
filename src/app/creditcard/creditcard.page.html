@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title *ngIf="card_type == 'credit_card'">Credit Card</ion-title>
+    <ion-title *ngIf="card_type == 'debit_card'">Debit Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="card_form" (ngSubmit)="CreatePayment(card_form.value)">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <p class="ion-text-center" *ngIf="card_type == 'debit_card'">
+            Zoom Pay requires the use of a debit card for deposits and
+            withdrawals.
+          </p>
+
+          <h2 *ngIf="card_type == 'credit_card'">Credit Card Information</h2>
+          <h2 *ngIf="card_type == 'debit_card'">Debit Card Information</h2>
+        </ion-col>
+
+        <ion-col size="12">
+          <ion-item lines="none" class="item_field">
+            <ion-label position="floating">Card Holder Name</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-item lines="none" class="item_field">
+            <ion-label position="floating">Card Number</ion-label>
+            <ion-input type="number" formControlName="number" [brmasker]="{mask:'0000000000000000', len:16}">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item lines="none" class="item_field">
+            <ion-label position="floating">Expiration</ion-label>
+            <ion-input type="text" [brmasker]="{mask:'00/0000', len:7}" placeholder="MM/YYYY"
+              formControlName="expire_date"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6" class="mb-10">
+          <ion-item lines="none" class="item_field">
+            <ion-label position="floating">CVV</ion-label>
+            <ion-input type="password" formControlName="cvc" [brmasker]="{mask:'0000', len:4}"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button expand="block" type="submit" class="theme-fill-btn mt-20" [disabled]="!card_form.valid">Continue
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

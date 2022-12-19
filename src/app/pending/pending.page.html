@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>success</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div>
+      <ion-img src="assets/images/success.svg"></ion-img>
+      <h5>Payment awaiting approval!</h5>
+      <p *ngIf="message != undefined">{{message}}</p>
+    </div>
+    <ion-button routerLink="/tabs/mywallet" (click)="updateBal()">
+      <ion-icon slot="start" src="assets/images/back-icon.svg"></ion-icon> back
+      to home
+    </ion-button>
+  </div>
+</ion-content>

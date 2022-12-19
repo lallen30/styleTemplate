@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <form [formGroup]="settingform" (ngSubmit)="submit()">
+        <ion-col size="12">
+          <h3>Allow friend access?</h3>
+          <ion-item lines="none" class="item_field">
+            <ion-label color="dark">When enabled, friends can search for you.</ion-label>
+            <ion-toggle formControlName="friendAccess" (ionChange)="friendAccessChange($event)" slot="end" mode="md">
+            </ion-toggle>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12">
+          <h3>Lock app to any transfers</h3>
+          <ion-item lines="none" class="item_field">
+            <ion-label color="dark"> Require a Pin to transfer from your wallet </ion-label>
+            <ion-toggle formControlName="is_pin" (ionChange)="Change($event)" slot="end" mode="md"></ion-toggle>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="already_pin && is_pin">
+          <p>Old pin</p>
+          <ion-item lines="none" class="item_field">
+            <ion-input color="dark" [brmasker]="{mask:'0000', len:4}" required formControlName="oldpin" type="password"
+              placeholder="Old pin"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="is_pin">
+          <p>New pin</p>
+          <ion-item lines="none" class="item_field">
+            <ion-input color="dark" [brmasker]="{mask:'0000', len:4}" formControlName="pin" type="password"
+              placeholder="New pin">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" *ngIf="is_pin">
+          <p>Verify new pin</p>
+          <ion-item lines="none" class="item_field">
+            <ion-input color="dark" [brmasker]="{mask:'0000', len:4}" formControlName="confirm_pin" type="password"
+              placeholder="Verify new pin"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" *ngIf="is_pin">
+          <ion-button type="submit" expand="block" [disabled]="!settingform.valid" fill="solid">SAVE</ion-button>
+        </ion-col>
+
+        <ion-col size="12" *ngIf="profile.pin_blocked && profile.is_pin==1">
+          <ion-button type="button" (click)="pinGenerate()" expand="block" fill="solid">Generate pin reset link
+          </ion-button>
+        </ion-col>
+      </form>
+    </ion-row>
+  </ion-grid>
+</ion-content>

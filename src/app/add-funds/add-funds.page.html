@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Add Funds</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12" class="send-or-request">
+        <ion-card>
+          <ion-text>$<b>{{number}}</b></ion-text>
+        </ion-card>
+
+        <div class="keypad">
+          <span (click)="pressing_number_paid('1')"><b>1</b></span>
+          <span (click)="pressing_number_paid('2')"><b>2</b></span>
+          <span (click)="pressing_number_paid('3')"><b>3</b></span>
+          <span (click)="pressing_number_paid('4')"><b>4</b></span>
+          <span (click)="pressing_number_paid('5')"><b>5</b></span>
+          <span (click)="pressing_number_paid('6')"><b>6</b></span>
+          <span (click)="pressing_number_paid('7')"><b>7</b></span>
+          <span (click)="pressing_number_paid('8')"><b>8</b></span>
+          <span (click)="pressing_number_paid('9')"><b>9</b></span>
+          <span (click)="pressing_number_paid('.')"><b>.</b></span>
+          <span (click)="pressing_number_paid('0')"><b>0</b></span>
+          <span (click)="cut()">
+            <b>
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </b>
+          </span>
+        </div>
+      </ion-col>
+      <ion-col size="12" class="mt-20">
+        <p *ngIf="dwolla_spinner == 'on'" class="ion-text-center mt-20 mb-20">
+          <ion-spinner name="dots"></ion-spinner>
+        </p>
+        <p class="field-label">Select A Source</p>
+        <ion-item lines="none" class="item_field">
+          <ion-select [(ngModel)]="verified_source_url">
+            <ion-select-option *ngFor="let item of funding_sources_lists; let i = index;"
+              value="{{item.funding_source_url}}">{{item.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <p *ngIf="dwolla_spinner == 'off' && funding_sources_lists.length == 0" style="color: white !important">
+          Please add a funding source first.
+        </p>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button (click)="add_wallet()" expand="block" class="theme-fill-btn mt-20 mb-20"
+          [disabled]="(dwolla_spinner == 'on') ? true : false">Add to wallet</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

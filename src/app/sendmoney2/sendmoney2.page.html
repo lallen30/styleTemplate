@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" name="chevron-back" (click)="back()"></ion-icon>
+    <ion-title>Transfer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="qrcont">
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12" class="send-action">
+        <h6>Send</h6>
+        <ion-button expand="block" routerLink="/userlist/{{number}}/{{cardid}}"
+          ><p>
+            <ion-img src="assets/images/instapass-2.svg"></ion-img>Instapass
+          </p></ion-button
+        >
+        <ion-button expand="block" (click)="goToQrScan()"
+          ><p>
+            <ion-img src="assets/images/qr-red.svg"></ion-img>QR code
+          </p></ion-button
+        >
+        <h6>Receive</h6>
+        <ion-button expand="block" routerLink="/qrcode"
+          ><p>
+            <ion-img src="assets/images/qr-red.svg"></ion-img>QR code
+          </p></ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

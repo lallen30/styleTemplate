@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>About Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col *ngIf="spinner == 'on'" size="12" class="ion-text-center">
+        <ion-spinner
+          class="spinner"
+          color="light"
+          style="text-align: center"
+        ></ion-spinner>
+      </ion-col>
+      <ion-col *ngIf="spinner == 'off'" size="12">
+        <p [innerHTML]="aboutus_content"></p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

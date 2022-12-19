@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>KYC</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="listing">
+  <ion-list>
+    <ion-item>
+      <ion-col size="3" class="ion-text-center">
+        <ion-thumbnail *ngIf="loginInfo.user_avatar">
+          <img src="{{loginInfo.user_avatar}}" alt="">
+        </ion-thumbnail>
+      </ion-col>
+      <ion-col size="9" class="ion-text-left">
+        <h5>{{loginInfo.name}}</h5>
+        <span>{{loginInfo.user_email}}</span>
+      </ion-col>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row class="recent-activity" *ngIf="!isStripeaccount && setting_spinner=='on'">
+      <ion-col size="12" class="ion-text-center">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" style="text-align: center" *ngIf="!isStripeaccount && setting_spinner=='off'">
+        <p>
+          Please add a debit card in account information first.
+          <a (click)="GotoAddCard()">Click here</a>
+        </p>
+      </ion-col>
+
+      <ion-col size="12" style="text-align: center" *ngIf="isStripeaccount">
+        <ion-chip color="{{(charges_enabled == true) ? 'success' : 'danger'}}">
+          <ion-label>Charges</ion-label>
+          <ion-spinner *ngIf="setting_spinner == 'on'" class="ios spinner-lines hydrated" role="progressbar"
+            style="width: 15px; color: white !important"></ion-spinner>
+          <ion-icon *ngIf="setting_spinner == 'off' && charges_enabled == true" name="checkmark-circle" color="success">
+          </ion-icon>
+          <ion-icon *ngIf="setting_spinner == 'off' && charges_enabled == false" name="alert" color="danger">
+          </ion-icon>
+        </ion-chip>
+
+        <ion-chip color="{{(payouts_enabled == true ) ? 'success' : 'danger'}}">
+          <ion-label>Payouts</ion-label>
+          <ion-spinner *ngIf="setting_spinner == 'on'" class="ios spinner-lines hydrated" role="progressbar"
+            style="width: 15px; color: white !important"></ion-spinner>
+          <ion-icon *ngIf="setting_spinner == 'off' && payouts_enabled == true" name="checkmark-circle" color="success">
+          </ion-icon>
+          <ion-icon *ngIf="setting_spinner == 'off' && payouts_enabled == false " name="alert" color="danger">
+          </ion-icon>
+        </ion-chip>
+
+        <ion-chip color="{{(payouts_enabled == true && charges_enabled == true) ? 'success' : 'danger'}}"
+          style="border: 1px solid" (click)="update_kyc(kyc_url)">
+          <ion-label>Update KYC</ion-label>
+          <ion-spinner *ngIf="setting_spinner == 'on'" class="ios spinner-lines hydrated" role="progressbar"
+            style="width: 15px; color: white !important"></ion-spinner>
+          <ion-icon *ngIf="setting_spinner == 'off' && payouts_enabled == true && charges_enabled == true"
+            name="checkmark-circle" color="success"></ion-icon>
+          <ion-icon *ngIf="setting_spinner == 'off' && (payouts_enabled == false || charges_enabled == false)"
+            name="alert" color="danger"></ion-icon>
+        </ion-chip>
+        <!-- <p *ngIf="setting_spinner == 'on'" style="width: 100%; text-align: center; margin: 0px;">
+                    <ion-spinner></ion-spinner>
+                </p> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

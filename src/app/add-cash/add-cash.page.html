@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>add cash</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12" class="mb-10">
+        <p class="heading-label">Add From</p>
+        <ion-item lines="none" class="item_field" *ngIf="ready">
+          <ion-select [(ngModel)]="card_id">
+            <ion-select-option *ngFor="let item of cards; let i = index;" value="{{item.id}}">{{item.name}}
+              ****-****-****-{{item.last4}}</ion-select-option>
+          </ion-select>
+
+        </ion-item>
+        <p *ngIf="!ready" class="ion-text-center">
+          <ion-spinner></ion-spinner>
+        </p>
+      </ion-col>
+      <ion-col size="12" class="mb-10">
+        <p class="heading-label">You are adding money to your Ipay wallet</p>
+        <p class="amount">
+          <ion-chip (click)="addAmount('50')" [ngClass]="{'active' : amount == '50'}">
+            <ion-label>$50</ion-label>
+          </ion-chip>
+          <ion-chip (click)="addAmount('100')" [ngClass]="{'active' : amount == '100'}">
+            <ion-label>$100</ion-label>
+          </ion-chip>
+          <ion-chip (click)="addAmount('150')" [ngClass]="{'active' : amount == '150'}">
+            <ion-label>$150</ion-label>
+          </ion-chip>
+          <ion-chip (click)="addAmount('250')" [ngClass]="{'active' : amount == '250'}">
+            <ion-label>$250</ion-label>
+          </ion-chip>
+          <ion-chip (click)="addAmount('300')" [ngClass]="{'active' : amount == '300'}">
+            <ion-label>$300</ion-label>
+          </ion-chip>
+          <ion-chip (click)="addAmount('500')" [ngClass]="{'active' : amount == '500'}">
+            <ion-label>$500</ion-label>
+          </ion-chip>
+          <ion-chip (click)="addAmount('1000')" [ngClass]="{'active' : amount == '1000'}">
+            <ion-label>$1000</ion-label>
+          </ion-chip>
+        </p>
+      </ion-col>
+      <ion-col size="12" class="mb-10">
+        <p class="heading-label">Other</p>
+        <ion-item lines="none" class="item_field">
+          <ion-input type="decimal" (ionBlur)="onAmountChange($event)" value="{{amount2 | currency}}"
+            (ionFocus)="focusOtherfield($event)" (ionChange)="amountAdd()" [(ngModel)]="other_amount" placeholder="$0">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="mb-10">
+        <ion-card class="card_bg">
+          <p class="heading-label">Total Charge</p>
+          <ion-item lines="none">
+            <ion-label>
+              <p> Amount : </p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline">
+              <ion-label>{{fees_amount.amount | currency}}</ion-label>
+            </ion-chip>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label>
+              <p> Processing Fees : </p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline">
+              <ion-label>{{fees_amount.fee | currency}}</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label>
+              <p> Admin Fees : </p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline" *ngIf="settingReady">
+              <ion-label>{{fees_amount.admin_fees | currency}}</ion-label>
+            </ion-chip>
+            <ion-chip slot="end" color="primary" fill="outline" *ngIf="!settingReady">
+              <ion-spinner name="dots"></ion-spinner>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>
+              <p> <strong>Total :</strong></p>
+            </ion-label>
+            <ion-badge slot="end" color="primary">
+              <ion-label> {{fees_amount.total | currency}}</ion-label>
+            </ion-badge>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" class="theme-fill-btn mt-10" [disabled]="card_id=='' || fees_amount.amount<1"
+          (click)="addWallet()">Submit</ion-button>
+        <ion-button expand="block" class="theme-outline-btn mt-15 mb-10" routerLink="/tabs/home2">CANCEL</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

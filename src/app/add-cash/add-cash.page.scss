@@ -1,0 +1,79 @@
+.card_bg {
+  --background: var(--ion-color-light);
+
+  padding: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid var(--ion-color-dark-contrast);
+  border-radius: 8px;
+  margin: 0px;
+
+  h3 {
+    color: var(--ion-color-dark);
+    font-size: 137.5%;
+    font-family: var(--ion-sixth-font);
+  }
+
+  p {
+    color: var(--ion-color-primary);
+    font-size: 100%;
+    font-family: var(--ion-fifth-font);
+    margin-bottom: 0px;
+  }
+
+  ion-item {
+    --background: transparent;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+
+    ion-chip,
+    ion-badge {
+      margin-right: 0px;
+      font-family: var(--ion-fifth-font);
+    }
+
+    ion-label {
+      p {
+        color: var(--ion-color-dark);
+      }
+    }
+
+    ion-badge {
+      font-size: 100%;
+      font-family: var(--ion-fifth-font);
+    }
+  }
+}
+
+.amount {
+  white-space: nowrap;
+  overflow-y: scroll;
+
+  ion-chip {
+    --background: var(--ion-color-light);
+    border: 2px solid var(--ion-color-light-tint);
+
+    ion-label {
+      color: var(--ion-color-dark);
+      font-size: 100%;
+      font-family: var(--ion-seventh-font);
+    }
+  }
+
+  ion-chip.active {
+    --background: var(--ion-color-light) !important;
+    border: 2px solid var(--ion-color-light-tint) !important;
+
+    ion-label {
+      color: var(--ion-color-dark);
+      font-size: 100%;
+      font-family: var(--ion-seventh-font);
+    }
+  }
+}
+
+ion-select {
+  width: 100%;
+}

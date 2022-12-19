@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideoptions">
+    <ion-slide>
+      <ion-img class="logo" src="/assets/images/logo2.png"></ion-img>
+      <span>
+        <h2>What is Zoom Pay?</h2>
+        <p>
+          Zoom Pay is a safe alternative to sending money from your accounts
+          electronically
+        </p>
+        <ion-button fill="clear" expand="block" style="opacity: 0">Next</ion-button>
+      </span>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-img class="logo" src="/assets/images/logo2.png"></ion-img>
+      <span>
+        <h2>KYC</h2>
+        <p>
+          In order to set up your bank account you must fill out your KYC
+          information. This is to maintain federal compliance and ensure the
+          safety of your transactions.
+        </p>
+        <ion-button fill="clear" expand="block" style="opacity: 0">Next</ion-button>
+      </span>
+    </ion-slide>
+
+    <ion-slide>
+      <ion-img class="logo" src="/assets/images/logo2.png"></ion-img>
+      <span>
+        <h2>Privacy</h2>
+        <p>
+          Zoom Pay protects your information and we do not store your personal
+          information on our server. Payments are protected by the world-class
+          leading Stripe payment gateway.
+        </p>
+        <ion-button class="theme-fill-btn mt-20" expand="block" routerLink="/home">Get Started
+        </ion-button>
+      </span>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

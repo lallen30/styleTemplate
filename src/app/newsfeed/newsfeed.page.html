@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>News Feeds</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="listing">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <p *ngIf="news_spinner == 'on'" style="margin: 0px; text-align: center">
+          <ion-spinner name="dots"></ion-spinner>
+        </p>
+        <ion-list>
+          <ion-item lines="none" detail="true" *ngFor="let news of newsData;" (click)="singleNews(news)">
+            <ion-thumbnail slot="start">
+              <ion-img *ngIf="news.news_featured_image" [src]="news.news_featured_image"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{news.news_title}}</h3>
+              <p>{{news.news_fulldescription}}</p>
+              <p class="date-readmore">{{news.news_datetime}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

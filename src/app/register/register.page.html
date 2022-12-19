@@ -1,0 +1,58 @@
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="openVerify()">
+    <ion-grid class="main-container">
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-img class="logo" src="/assets/images/logo2.png"></ion-img>
+        </ion-col>
+        <ion-col size="12">
+          <h3 class="title">SIGN UP</h3>
+          <p class="subtitle mb-20">
+            Welcome to Zoom Pay Solutions, enter your information below to Sign
+            Up!
+          </p>
+        </ion-col>
+        <ion-col size="12" class="mb-10">
+          <ion-item lines="none" class="item_field">
+
+            <ion-label position="floating">Email</ion-label>
+            <ion-icon slot="start" name="mail"></ion-icon>
+            <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" class="mb-10">
+          <ion-item lines="none" class="item_field">
+            <ion-label position="floating">Password</ion-label>
+            <ion-icon slot="start" name="lock-closed"></ion-icon>
+            <ion-input [type]="passwordType" autocapitalize="off" clearOnEdit="false" formControlName="password"
+              placeholder="********"></ion-input>
+            <ion-icon name="eye-off" slot="end" (click)="hideShowPassword()">
+            </ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12">
+          <p class="privacy">
+            <ion-checkbox mode="md" (click)="termcon($event)" formControlName="accept_terms_conditions"></ion-checkbox>
+            <ion-label>
+              I agree to
+              <ion-text (click)="goto('termcondition')"><strong>terms of services</strong>
+              </ion-text>
+              &
+              <ion-text (click)="goto('privacypolicy')"><strong>privacy policy</strong></ion-text>
+            </ion-label>
+          </p>
+        </ion-col>
+        <ion-col size="12">
+          <ion-button expand="block" class="theme-fill-btn" type="submit" [disabled]="!registerForm.valid">SIGN UP
+          </ion-button>
+        </ion-col>
+        <ion-col size="12">
+          <p class="mt-30">
+            Already have an account?
+            <ion-text color="primary" routerLink="/login">Sign In</ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

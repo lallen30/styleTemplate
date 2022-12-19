@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Requests</ion-title>
+    <ion-icon slot="end" name="reload-outline" (click)="reload()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="listing">
+  <ion-grid>
+    <p *ngIf="spinner == 'on'" style="text-align: center; width: 100% !important">
+      <ion-spinner name="dots"></ion-spinner>
+    </p>
+    <ion-list *ngIf="spinner == 'off' && requests.length == 0">
+      <ion-item>
+        <ion-label>
+          <h3>You currently have no requests.</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="requests.length > 0">
+      <ion-item *ngFor="let item of requests; let i = index">
+        <!-- [ngClass]="(loginInfo.user_id == item.user_id) ? 'my-request' : ''" -->
+        <ion-thumbnail slot="start">
+          <ion-img [src]="item.otherUserInfo.user_avatar"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.otherUserInfo.name}}</h3>
+          <p>{{item.otherUserInfo.email}}</p>
+          <div *ngIf="item.user_id == loginInfo.user_id">
+            <ion-button *ngIf="item.status == 'pending'" (click)="change_request_status(i, 'cancelled')" color="danger">
+              Cancel</ion-button>
+            <ion-button *ngIf="item.status != 'pending'" color="light">{{item.status | titlecase}}</ion-button>
+          </div>
+          <div *ngIf="item.user_id != loginInfo.user_id">
+            <ion-button *ngIf="item.status == 'pending'" (click)="goto_detail_page(item)" color="success">Accept
+            </ion-button>
+            <ion-button *ngIf="item.status == 'pending'" (click)="change_request_status(i, 'rejected')" color="danger">
+              Reject</ion-button>
+            <ion-button *ngIf="item.status != 'pending'" color="light">{{item.status | titlecase}}</ion-button>
+          </div>
+        </ion-label>
+        <section (click)="goto_detail_page(item)">
+          <b>
+            {{item.amount | currency}}
+            <ion-icon *ngIf="loginInfo.user_id == item.user_id" name="trending-up-outline" color="success"></ion-icon>
+            <ion-icon *ngIf="loginInfo.user_id != item.user_id" name="trending-up-outline" color="danger"
+              style="transform: rotate(180deg)"></ion-icon>
+          </b>
+        </section>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-content>

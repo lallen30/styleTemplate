@@ -1,0 +1,33 @@
+ion-item {
+  --inner-padding-end: 15px;
+  --inner-border-width: 0;
+  --padding-start: 15px;
+  --background: transparent;
+
+  ion-icon {
+    color: var(--ion-color-warning);
+  }
+
+  ion-label {
+    color: var(--ion-color-dark) !important;
+    font-size: 100%;
+    font-family: var(--ion-seventh-font);
+  }
+}
+
+ion-label {
+  color: var(--ion-color-dark-tint) !important;
+}
+
+.menu_list {
+  background: transparent;
+}
+
+ion-badge {
+  font-size: 37.5%;
+  height: 9px;
+  padding: 0;
+  position: relative;
+  bottom: 7px;
+  right: 2px;
+}

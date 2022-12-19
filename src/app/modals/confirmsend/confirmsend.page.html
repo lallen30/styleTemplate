@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="action_type=='send'">Send</ion-title>
+    <ion-title *ngIf="action_type!='send'">Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-img src="{{user.user_avatar}}" alt=""></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <h3>{{user.display_name}}</h3>
+      <p>{{user.email}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-icon size="large" name="logo-usd"></ion-icon>
+          <h3>{{amount | currency}}</h3>
+          <p>Transaction</p>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-card style="background-image: url(/assets/theme-icon/bal-bg.png)">
+          <p>Total Charge</p>
+          <ion-item lines="none">
+            <ion-label>
+              <p>Amount :</p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline">
+              <ion-label>{{fees_amount.amount | currency}}</ion-label>
+            </ion-chip>
+          </ion-item>
+          <ion-item lines="full" *ngIf="payment_sources=='stripe'">
+            <ion-label>
+              <p>Processing Fees :</p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline">
+              <ion-label>{{fees_amount.fee | currency}}</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item lines="full">
+            <ion-label>
+              <p>Admin Fees :</p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline" *ngIf="settingReady">
+              <ion-label>{{fees_amount.admin_fees | currency}}</ion-label>
+            </ion-chip>
+            <ion-chip slot="end" color="primary" fill="outline" *ngIf="!settingReady">
+              <ion-spinner name="dots"></ion-spinner>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>
+              <p><strong>Total :</strong></p>
+            </ion-label>
+            <ion-badge slot="end" color="primary">
+              <ion-label> {{fees_amount.total | currency}}</ion-label>
+            </ion-badge>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="action_type=='send'">
+        <ion-item lines="none" *ngIf="payment_sources == 'stripe' && card">
+          <ion-icon slot="start" size="large" name="grid-outline"></ion-icon>
+          <ion-label>
+            <h3>{{card}}</h3>
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none" *ngIf="payment_sources == 'wallet'">
+          <ion-icon slot="start" size="large" name="grid-outline"></ion-icon>
+          <ion-label>
+            <h3>Wallet({{wallet_balance | currency}})</h3>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <p>Message</p>
+        <ion-item lines="none" class="item_field">
+          <ion-label>
+            <ion-text>{{description}}</ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="action_type=='send' && profile && profile.is_pin && profile.is_pin=='1'">
+        <p>Enter Your Pin to Confrm This Transfer</p>
+        <ion-item lines="none" class="item_field">
+          <ion-input [(ngModel)]="pin" [brmasker]="{mask:'0000', len:4}" type="password" class="ion-text-center">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-button expand="block" fill="outline" (click)="back()">CANCEL</ion-button>
+      </ion-col>
+      <ion-col size="6" *ngIf="action_type=='send'">
+        <!-- [disabled]="pin.length != 4" -->
+        <ion-button [disabled]="!settingReady" expand="block" fill="outline" (click)="confirmTransaction()">SEND
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" *ngIf="action_type=='request'">
+        <ion-button expand="block" fill="outline" (click)="confirmTransaction()">Request
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,99 @@
+ion-button {
+  text-transform: capitalize;
+  --border-radius: 50px;
+  font-size: 87.5%;
+  margin: 0px 0px 30px 10px;
+  // width: 120px;
+  display: block;
+  height: 36px;
+  letter-spacing: 0;
+}
+
+ion-card {
+  margin: 5px 15px 40px;
+  border-radius: 10px;
+}
+
+
+.image-section {
+  text-align: center;
+  height: 120px;
+  position: relative;
+  background: linear-gradient(to bottom, var(--ion-color-light-shade) 0%, var(--ion-color-light) 100%);
+
+  ion-avatar {
+    height: 100px;
+    width: 100px;
+    border: 3px solid var(--ion-color-dark-contrast);
+    margin: auto;
+    position: relative;
+    top: 50px;
+  }
+
+  .edit {
+    position: absolute;
+    right: 20px;
+    bottom: -10px;
+    width: 30px;
+  }
+}
+
+.main-container {
+  margin-top: 50px;
+  width: 100%;
+
+  .user_title {
+    font-family: var(--ion-forth-font);
+    font-size: 112.5%;
+    color: var(--ion-color-primary);
+    margin: 0px;
+    text-align: center;
+  }
+
+  .user_email {
+    font-family: var(--ion-fifth-font);
+    font-size: 100%;
+    color: var(--ion-color-dark-shade);
+    margin: 0px;
+    text-align: center;
+  }
+
+  .zp-code {
+    background-color: var(--ion-color-primary);
+    height: 52px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--ion-color-dark-contrast);
+    color: var(--ion-color-light);
+    font-size: 112.5%;
+    font-family: var(--ion-sixth-font);
+    margin: 15px 0px;
+  }
+
+  .member_title {
+    font-family: var(--ion-forth-font);
+    font-size: 100%;
+    color: var(--ion-color-dark);
+    margin: 0px;
+    text-align: center;
+  }
+
+  ion-card {
+    --background: var(--ion-color-primary);
+    border: 2px solid var(--ion-color-dark-contrast);
+    border-radius: 15px;
+    margin: 0px;
+    padding: 20px 10px 10px 15px;
+    min-height: 115px;
+
+    h3 {
+      color: var(--ion-color-dark);
+      font-family: var(--ion-seventh-font);
+      font-size: 92%;
+      margin-bottom: 0px;
+    }
+  }
+
+}

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-row *ngIf="!ready">
+    <ion-col size="12" class="ion-text-center">
+      <ion-spinner></ion-spinner>
+    </ion-col>
+  </ion-row>
+  <ion-grid class="ion-padding" *ngIf="ready">
+    <ion-list>
+      <ion-item lines="none" detail="false" *ngFor="let notification of notifications">
+        <ion-thumbnail slot="start" (click)="goto_page(notification)">
+          <ion-img src="{{notification.from_user_name_img}}"></ion-img>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{notification.title}}</h3>
+          <p>{{notification.message}}</p>
+        </ion-label>
+        <ion-text colo="primary">{{notification.date | date}}</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="selectedNotification.length > 0">
+    <ion-fab-button (click)="delete_notification_confirm()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

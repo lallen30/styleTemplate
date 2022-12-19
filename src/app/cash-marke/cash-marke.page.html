@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>friend-access</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-grid class="main-container">
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-img class="logo" src="/assets/images/logo2.png"></ion-img>
+        </ion-col>
+        <ion-col size="12">
+          <h3 class="title ion-text-center">This is your Zoom Pay ID</h3>
+        </ion-col>
+        <ion-col size="12">
+          <ion-note>
+            <!-- (ionChange)="validate_zoompay_marker()" -->
+            <ion-input
+              type="text"
+              [(ngModel)]="zoompay_marker"
+              [ngModelOptions]="{standalone: true}"
+              readonly
+            ></ion-input>
+          </ion-note>
+          <p *ngIf="validate_spinner == 'on'"><ion-spinner></ion-spinner></p>
+          <!-- <p *ngIf="validate_spinner == 'off'">{{zoompay_marker}} is avaiable.</p> -->
+        </ion-col>
+        <ion-col size="12">
+          <ion-button
+            expand="block"
+            (click)="save_zoompay_marker()"
+            [disabled]="validate_spinner == 'on' || is_available == 'no'"
+            >NEXT</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

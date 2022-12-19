@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Send Funds</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-text><b>{{number | currency}}</b></ion-text>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12" *ngIf="action_type=='send'">
+        <p>Select A card</p>
+        <ion-item *ngIf="ready" lines="none" class="item_field">
+          <ion-select (ionChange)="change_payment_sources($event)">
+            <ion-select-option value="wallet">Wallet({{wallet_balance | currency}})</ion-select-option>
+            <ion-select-option *ngFor="let item of cards; let i = index;" value="{{i}}">{{item.name}}
+              ****-****-****-{{item.last4}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <p *ngIf="payment_sources == 'wallet'">
+          Receiver will receive amount in their wallet.
+        </p>
+        <p *ngIf="!ready" class="ion-text-center">
+          <ion-spinner></ion-spinner>
+        </p>
+        <p *ngIf="ready && cards.length == 0 && payment_sources == 'stripe'">
+          In order to send money please add card.
+        </p>
+      </ion-col>
+
+      <ion-col size="12">
+        <p>To</p>
+        <ion-item lines="none" class="item_field">
+          <ion-label>
+            <ion-text *ngIf="selected_user">{{selected_user.name}}</ion-text>
+          </ion-label>
+          <ion-icon name="search" slot="end" size="small"></ion-icon>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <p>For</p>
+        <ion-item lines="none" class="item_field">
+          <ion-textarea rows="5" [(ngModel)]="description" placeholder="Enter more information here..."></ion-textarea>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button *ngIf="action_type=='send'" (click)="Preview()" expand="block" fill="outline"
+          [disabled]="number=='' || number=='0' || selected_user.length==0 || payment_sources == '' ">Next</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

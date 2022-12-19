@@ -1,0 +1,601 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-Bold.woff2') format('woff2'),
+        url('assets/fonts/Rubik-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-ExtraBold.woff2') format('woff2'),
+        url('assets/fonts/Rubik-ExtraBold.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-Light.woff2') format('woff2'),
+        url('assets/fonts/Rubik-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-Regular.woff2') format('woff2'),
+        url('assets/fonts/Rubik-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-SemiBold.woff2') format('woff2'),
+        url('assets/fonts/Rubik-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url('assets/fonts/Rubik-Medium.woff2') format('woff2'),
+        url('assets/fonts/Rubik-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('assets/fonts/BebasNeueRegular.woff2') format('woff2'),
+        url('assets/fonts/BebasNeueRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('assets/fonts/BebasNeue-Bold.woff2') format('woff2'),
+        url('assets/fonts/BebasNeue-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('assets/fonts/BebasNeueRegular.woff2') format('woff2'),
+        url('assets/fonts/BebasNeueRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('assets/fonts/BebasNeueLight.woff2') format('woff2'),
+        url('assets/fonts/BebasNeueLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('assets/fonts/BebasNeue-Bold.woff2') format('woff2'),
+        url('assets/fonts/BebasNeue-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('assets/fonts/BebasNeueLight.woff2') format('woff2'),
+        url('assets/fonts/BebasNeueLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url(assets/fonts/Raleway-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Raleway-Regular';
+    src: url(assets/fonts/Raleway-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Muli-Bold';
+    src: url(assets/fonts/Mulish-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'Muli-Regular';
+    src: url(assets/fonts/Mulish-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Muli-semiBold';
+    src: url(assets/fonts/Mulish-SemiBold.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --ion-primary-font: 'Rubik';
+    --ion-secondary-font: 'Bebas Neue';
+    --ion-tertiary-font: 'Raleway-Bold';
+    --ion-forth-font: 'Raleway-Regular';
+    --ion-fifth-font: 'Muli-Regular';
+    --ion-sixth-font: 'Muli-Bold';
+    --ion-seventh-font: 'Muli-semiBold';
+}
+
+
+.logo {
+    width: 70vmin;
+    margin: 10vmin;
+}
+
+ion-grid {
+    color: var(--ion-color-dark);
+    font-family: var(--ion-fifth-font);
+}
+
+ion-header {
+    ion-toolbar {
+        --border-width: 0px !important;
+        --color: var(--ion-color-dark);
+        --background: var(--ion-color-light-tint);
+
+        ion-title {
+            color: var(--ion-color-dark);
+            font-family: var(--ion-tertiary-font);
+            text-transform: uppercase;
+            font-size: 100%;
+        }
+
+        ion-avatar img {
+            padding: 6px;
+        }
+
+        ion-icon {
+            padding-right: 10px;
+        }
+    }
+}
+
+.header-ios ion-toolbar:last-of-type {
+    --border-width: 0px !important;
+}
+
+ion-content {
+    --background: var(--ion-color-light);
+    --color: var(--ion-color-dark);
+
+    P,
+    ion-text {
+        color: var(--ion-color-dark);
+    }
+}
+
+.sc-ion-label-ios-s>p {
+    color: var(--ion-color-dark);
+}
+
+app-walletnew {
+    ion-grid {
+        height: 100%;
+    }
+}
+
+ion-button {
+    text-transform: uppercase;
+
+}
+
+ion-toolbar {
+    --min-height: 62px;
+}
+
+
+.barcode svg {
+    max-width: 250px !important;
+}
+
+
+.theme-fill-btn {
+    --background: linear-gradient(to right, var(--ion-color-primary-gradient) 0%, var(--ion-color-primary) 100%);
+    --background-activated: linear-gradient(to right, var(--ion-color-primary-gradient) 0%, var(--ion-color-primary) 100%);
+    --border-width: 0px;
+    --color: var(--ion-color-dark);
+    --color-activated: var(--ion-color-dark);
+    text-transform: uppercase;
+    font-family: var(--ion-tertiary-font);
+    font-size: 100%;
+    height: 52px;
+    --border-radius: 30px;
+}
+
+.theme-outline-btn {
+    --background: transparent;
+    --background-activated: var(--ion-color-primary);
+    --color: var(--ion-color-primary);
+    --color-activated: var(--ion-color-dark);
+    --border-width: 2px;
+    --border-style: solid;
+    text-transform: uppercase;
+    font-family: var(--ion-tertiary-font);
+    font-size: 100%;
+    height: 52px !important;
+    --border-radius: 30px;
+}
+
+.theme-red-btn {
+    --background: transparent;
+    --background-activated: var(--ion-color-secondary);
+    --color: var(--ion-color-secondary);
+    --color-activated: var(--ion-color-dark);
+    --border-width: 2px;
+    --border-style: solid;
+    --border-color: var(--ion-color-secondary);
+    text-transform: uppercase;
+    font-family: var(--ion-tertiary-font);
+    font-size: 100%;
+    height: 42px;
+    --border-radius: 30px;
+}
+
+.theme-green-btn {
+    --background: transparent;
+    --background-activated: var(--ion-color-success);
+    --color: var(--ion-color-success);
+    --color-activated: var(--ion-color-dark);
+    --border-width: 2px;
+    --border-style: solid;
+    --border-color: var(--ion-color-success);
+    text-transform: uppercase;
+    font-family: var(--ion-tertiary-font);
+    font-size: 100%;
+    height: 42px;
+    --border-radius: 30px;
+}
+
+.search_action {
+    --backdrop-opacity: 0.9 !important;
+
+    .modal-wrapper {
+        height: 310px !important;
+        width: 250px !important;
+        background: transparent !important;
+
+    }
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-15 {
+    margin-top: 15px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.mt-25 {
+    margin-top: 25px !important;
+}
+
+.mt-30 {
+    margin-top: 30px !important;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+
+.title {
+    margin: 0px;
+    color: var(--ion-color-dark);
+    font-family: var(--ion-tertiary-font);
+    letter-spacing: 2px;
+    font-size: 112.5%;
+
+}
+
+.subtitle {
+    margin: 0px;
+    color: var(--ion-color-dark);
+    font-family: var(--ion-fifth-font);
+    font-size: 100%;
+
+}
+
+.field-label {
+    color: var(--ion-color-light-tint);
+    font-size: 100%;
+    font-family: var(--ion-sixth-font);
+    margin-top: 0px;
+    margin-bottom: 7px;
+}
+
+.item_field {
+    --min-height: 52px;
+    --background: var(--ion-color-light-shade);
+    border: 2px solid var(--ion-color-primary);
+    border-radius: 8px;
+    font-family: var(--ion-fifth-font);
+    color: var(--ion-color-dark);
+
+    ion-input,
+    ion-textarea,
+    ion-select,
+    ion-datetime {
+        --placeholder-color: var(--ion-color-dark-tint);
+        --placeholder-opacity: 0.5;
+        font-size: 100%;
+        color: var(--ion-color-dark);
+        font-family: var(--ion-fifth-font);
+    }
+
+    ion-icon {
+        color: var(--ion-color-dark);
+    }
+}
+
+.main-container {
+    width: 95%;
+    margin: auto;
+}
+
+.btn-title {
+    color: var(--ion-color-dark);
+    font-size: 137.5%;
+    font-family: var(--ion-sixth-font);
+    text-align: center;
+}
+
+p {
+    font-size: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--ion-color-primary);
+}
+
+.heading-label {
+    color: var(--ion-color-primary);
+}
+
+ion-badge {
+    border-radius: 16px;
+    height: 30px;
+    padding: 8px 8px 0 8px;
+}
+
+ion-card-content {
+    h3 {
+        color: var(--ion-color-dark);
+    }
+}
+
+.recent-activity {
+    ion-card {
+        --background: var(--ion-color-secondary);
+        margin: 0px;
+        border: 2px solid var(--ion-color-light);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+
+        ion-thumbnail {
+            height: 60px;
+            width: 60px;
+
+            img {
+                border-radius: 8px;
+            }
+        }
+
+        h4 {
+            color: var(--ion-color-dark);
+            font-size: 100%;
+            font-family: var(--ion-sixth-font);
+            margin: 0px;
+        }
+
+        h3 {
+            color: var(--ion-color-dark);
+            font-size: 112.5%;
+            font-family: var(--ion-sixth-font);
+            margin: 0px;
+        }
+
+        p {
+            color: var(--ion-color-dark-shade);
+            font-size: 75%;
+            font-family: var(--ion-fifth-font);
+            margin: 0px;
+        }
+    }
+
+    .user_name {
+        width: 135px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-left: 10px;
+
+        h4 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .item-price {
+        width: 85px;
+        text-align: right;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        h3 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.privacy,
+.remember {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+ion-checkbox {
+    background: var(--ion-color-light);
+    border-width: 2px !important;
+    border-style: solid !important;
+    border-radius: 4px;
+    border-color: var(--ion-color-primary) !important;
+    --height: 35px;
+    --width: 35px;
+    --checkmark-color: var(--ion-color-primary);
+    --background-checked: var(--ion-color-secondary);
+    --border-color: var(--ion-color-light);
+    --border-color-checked: var(--ion-color-secondary);
+    padding: 1px;
+}
+
+.listing {
+    ion-button {
+        font-size: 75%;
+        --border-radius: 30px;
+        letter-spacing: 0px;
+        font-weight: 400;
+    }
+
+    ion-button.reject {
+        --background: var(--ion-color-dark-tint);
+    }
+
+    ion-button.pending {
+        --background: var(--ion-color-dark-tint);
+    }
+
+    ion-item {
+        --padding-start: 6px;
+        --inner-padding-end: 6px;
+        --inner-border-width: 0;
+        margin-bottom: 10px;
+        --padding-top: 4px;
+        --padding-bottom: 4px;
+        --border-radius: 12px;
+        --background: var(--ion-color-secondary);
+        color: var(--ion-color-dark);
+
+        h3 {
+            font-size: 100% !important;
+            font-family: var(--ion-sixth-font);
+            color: var(--ion-color-dark);
+            margin: 0;
+        }
+
+        p {
+            font-size: 87.5% !important;
+            font-family: var(--ion-fifth-font);
+            color: var(--ion-color-dark);
+        }
+
+        ion-label {
+            margin: 5px 0;
+        }
+    }
+
+    ion-thumbnail {
+        margin-right: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    ion-list {
+        background: transparent;
+    }
+
+
+    ion-content {
+        ion-icon[name="trending-up-outline"] {
+            font-size: 125%;
+            position: relative;
+            top: 5px;
+        }
+
+
+        b {
+            font-size: 87.5%;
+            color: var(--ion-color-light);
+            background: var(--ion-color-primary);
+            border: 1px solid var(--ion-color-primary);
+            padding: 5px 10px;
+            border-radius: 18px;
+            font-family: var(--ion-fifth-font);
+            text-align: center;
+        }
+    }
+}

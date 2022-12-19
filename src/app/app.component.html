@@ -1,0 +1,71 @@
+<ion-app>
+    <ion-menu side="start" menuId="first" contentId="main" swipeGesture="false">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Menu</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list class="menu_list">
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/tabs/mywallet">
+                        <ion-icon slot="start" name="home"></ion-icon>
+                        <ion-label>Home</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/tabs/stripe-kyc">
+                        <ion-icon slot="start" name="list-outline"></ion-icon>
+                        <ion-label>KYC</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/listing">
+                        <ion-icon slot="start" name="git-pull-request-outline"></ion-icon>
+                        <ion-label>Request History <ion-badge color="danger"
+                                *ngIf="notificationBadgeready && notificationBadge.requests">&nbsp;</ion-badge>
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/tabs/newsfeed">
+                        <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+                        <ion-label>News Feed <ion-badge color="danger"
+                                *ngIf="notificationBadgeready && notificationBadge.news">&nbsp;</ion-badge>
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/notifications">
+                        <ion-icon slot="start" name="notifications-outline"></ion-icon>
+                        <ion-label>Notifications <ion-badge color="danger"
+                                *ngIf="notificationBadgeready && notificationBadge.notifications">&nbsp;</ion-badge>
+                        </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/tabs/contact">
+                        <ion-icon slot="start" name="call-outline"></ion-icon>
+                        <ion-label>Contact Us</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item routerLink="/about-us">
+                        <ion-icon slot="start" name="person-outline"></ion-icon>
+                        <ion-label>About Us</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item (click)="logout()">
+                        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+                        <ion-label>Logout</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

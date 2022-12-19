@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>CONNECTED ACCOUNTS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="!ready" size="12">
+        <ion-spinner></ion-spinner>
+      </ion-col>
+
+      <ion-col size="12" *ngIf="ready">
+        <ion-card color="secondary" *ngFor="let debit of account_listing.debit_cards">
+          <ion-row>
+            <ion-col size="6" class="ion-text-left">
+              <h3>{{debit.funding}}</h3>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <ion-icon size="large" name="cash"></ion-icon>
+            </ion-col>
+            <ion-col size="6" class="ion-text-left">
+              <ion-text>{{debit.name}}</ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <ion-text>**** **** **** {{debit.last4}}</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <p class="ion-text-left">{{debit.brand}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <p class="ion-text-right">
+                {{debit.exp_month}} / {{debit.exp_year}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+        <ion-card color="secondary" *ngFor="let debit of account_listing.credit_cards">
+          <ion-row>
+            <ion-col size="6" class="ion-text-left">
+              <h3>{{debit.funding}}</h3>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <ion-icon size="large" name="card"></ion-icon>
+            </ion-col>
+            <ion-col size="6" class="ion-text-left">
+              <ion-text>{{debit.name}}</ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <ion-text>**** **** **** {{debit.last4}}</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <p class="ion-text-left">{{debit.brand}}</p>
+            </ion-col>
+            <ion-col size="6">
+              <p class="ion-text-right">
+                {{debit.exp_month}} / {{debit.exp_year}}
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+
+        <ion-card color="secondary" *ngFor="let bank of account_listing.bank_account">
+          <ion-row>
+            <ion-col size="6" class="ion-text-left">
+              <h3>{{bank.bank_name}}</h3>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <ion-icon size="large" name="card"></ion-icon>
+            </ion-col>
+            <ion-col size="6" class="ion-text-left">
+              <ion-text>{{bank.account_holder_name}}</ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-text-right">
+              <ion-text>**** **** **** {{bank.last4}}</ion-text>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <p class="ion-text-left">{{bank.routing_number}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col size="12">
+      <ion-button expand="block" fill="solid" (click)="choose_card_type('credit_card')">Add Credit Card</ion-button>
+      <ion-button expand="block" fill="solid" (click)="choose_card_type('debit_card')">Add Debit Card</ion-button>
+      <ion-button expand="block" fill="solid" (click)="goToAddBank()">Add Bank</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

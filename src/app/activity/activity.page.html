@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>activity</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row class="recent-activity" *ngIf="!transaction_ready">
+      <ion-col size="12" class="ion-text-center">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="recent-activity" *ngIf="transaction_ready && transactions.length>0">
+      <ion-col size="12" *ngFor="let trans of transactions" (click)="goToActivity(trans)">
+        <ion-card>
+          <ion-thumbnail *ngIf="trans.to_name">
+            <img src="{{trans.to_name.user_avatar}}" alt="">
+          </ion-thumbnail>
+          <div class="user_name">
+            <h4>{{trans.to_name.display_name}}</h4>
+            <p>{{trans.send_date}}</p>
+          </div>
+          <div class="ion-text-center" *ngIf="trans.icon=='wallet'">
+            <img width="15" src="assets/theme-icon/wallet.svg" alt="">
+            <p>{{trans.text_type}}</p>
+          </div>
+
+          <div class="ion-text-center" *ngIf="trans.icon=='red_arrow'">
+            <img width="15" src="assets/theme-icon/red-arrow.svg" alt="">
+            <p>{{trans.text_type}}</p>
+          </div>
+
+          <div class="ion-text-center" *ngIf="trans.icon=='green_arrow'">
+            <img width="15" src="assets/theme-icon/green-arrow.svg" alt="">
+            <p>{{trans.text_type}}</p>
+          </div>
+          <div class="item-price">
+            <h3>{{trans.amount | currency }}</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+    </ion-row>
+    <ion-row class="recent-activity" *ngIf="transaction_ready && transactions.length==0">
+      <ion-col size="12" class="ion-text-center">
+        No transactions !!
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

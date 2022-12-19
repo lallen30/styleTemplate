@@ -1,0 +1,43 @@
+.field-label {
+  padding: 5px 5px 0 5px;
+}
+
+.user-box {
+  --background: var(--ion-color-light);
+
+  ion-avatar {
+    height: 80px;
+    width: 80px;
+    border: 2px solid var(--ion-color-dark);
+  }
+
+  h3 {
+    font-size: 100%;
+    font-family: var(--ion-sixth-font);
+    margin-bottom: 0px;
+    color: var(--ion-color-dark);
+  }
+
+  p {
+    font-size: 100%;
+    margin-bottom: 0px;
+  }
+}
+
+p {
+  font-family: var(--ion-fifth-font);
+  color: var(--ion-color-dark);
+}
+
+.bank-edit-item {
+  --background: transparent;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  margin: 20px 0px;
+
+  h3 {
+    font-family: var(--ion-seventh-font);
+    color: var(--ion-color-dark) !important;
+    font-size: 100%;
+  }
+}

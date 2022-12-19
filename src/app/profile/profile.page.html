@@ -1,0 +1,52 @@
+<ion-content>
+  <ion-grid class="ion-no-padding" class="image-section">
+    <ion-avatar>
+      <img *ngIf="loginInfo?.user_avatar" [src]="loginInfo?.user_avatar" />
+    </ion-avatar>
+  </ion-grid>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12">
+        <h3 class="user_title">{{loginInfo?.name}}</h3>
+        <p class="user_email">{{loginInfo?.email}}</p>
+      </ion-col>
+      <ion-col size="12">
+        <ion-text class="zp-code">{{loginInfo?.zoompay_marker}}</ion-text>
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="member_title">Member Since {{loginInfo.join_year}}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row class="mt-15">
+      <ion-col size="6">
+        <ion-card (click)="navCtrl.navigateForward('editprofile')">
+          <img width="30" src="assets/theme-icon/p-icon-1.svg" alt="" />
+          <h3>Edit Account</h3>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card (click)="navCtrl.navigateForward('financial-settings')">
+          <img width="30" src="assets/theme-icon/p-icon-2.svg" alt="" />
+          <h3>Connected Accounts</h3>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/setting">
+          <img width="30" src="assets/theme-icon/p-icon-3.svg" alt="" />
+          <h3>Settings</h3>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card routerLink="/contact">
+          <img width="30" src="assets/theme-icon/p-icon-4.svg" alt="" />
+          <h3>Contact Support</h3>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" (click)="logout()" class="theme-outline-btn mt-15">LOG OUT</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

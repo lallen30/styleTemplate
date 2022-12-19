@@ -1,0 +1,33 @@
+.card_bg {
+  --background: var(--ion-color-light-black);
+
+  padding: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid var(--ion-color-dark-black);
+  border-radius: 30px;
+  margin: 0px;
+
+  h3 {
+    color: var(--ion-color-text-white);
+    font-size: 137.5%;
+    font-family: var(--ion-sixth-font);
+  }
+
+  p {
+    color: var(--ion-color-yellow);
+    font-size: 100%;
+    font-family: var(--ion-forth-font);
+    margin-bottom: 0px;
+  }
+}
+
+.theme-fill-btn {
+  img {
+    margin-right: 15px;
+  }
+}
+
+.header-ios ion-toolbar:last-of-type {
+  --border-width: 0;
+}

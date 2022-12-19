@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Send Money</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item lines="none" class="user-box">
+    <ion-avatar slot="start">
+      <ion-icon size="large" size="large" slot="start" name="person"></ion-icon>
+    </ion-avatar>
+    <ion-label>
+      <h3>Suzy Que</h3>
+      <p>hello@test.com</p>
+    </ion-label>
+  </ion-item>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12">
+        <ion-text class="zp-code">ZP-845</ion-text>
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="pin-title">You are sending</h3>
+      </ion-col>
+      <ion-col size="12">
+        <ion-card
+          class="card_bg"
+          style="background-image: url(/assets/theme-icon/bal-bg.png)"
+        >
+          <img width="30" src="assets/theme-icon/dolar-icon.svg" />
+          <h3>$15,499.49</h3>
+          <p>Cash Balance</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="pin-title">Enter your Pin to confirm this transfer</h3>
+      </ion-col>
+      <ion-col size="12" class="mb-10">
+        <div class="pin-section">
+          <ion-input type="text" placeholder="0"></ion-input>
+          <ion-input type="text" placeholder="0"></ion-input>
+          <ion-input type="text" placeholder="0"></ion-input>
+          <ion-input type="text" placeholder="0"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" class="theme-fill-btn mt-10"
+          >SUBMIT</ion-button
+        >
+        <ion-button
+          expand="block"
+          class="theme-outline-btn mt-15 mb-10"
+          routerLink="/activity"
+          >CANCEL</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

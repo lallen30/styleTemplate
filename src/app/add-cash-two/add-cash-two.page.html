@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Add Cash</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-icon size="large" name="wallet"></ion-icon>
+          <h3>+ $200</h3>
+          <p>My ZP Wallet</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <ion-note
+          >You are Adding <ion-text>$200</ion-text> to Your ZP
+          Wallet!!!</ion-note
+        >
+      </ion-col>
+      <ion-col size="12">
+        <ion-item lines="none">
+          <ion-icon size="large" slot="start" name="grid"></ion-icon>>
+          <ion-label>
+            <h3>Bank Name</h3>
+          </ion-label>
+          <ion-icon size="large" name="create"></ion-icon>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <h3>Enter your Pin to confirm this transfer</h3>
+      </ion-col>
+      <ion-col size="12">
+        <div>
+          <ion-input type="text" placeholder="0"></ion-input>
+          <ion-input type="text" placeholder="0"></ion-input>
+          <ion-input type="text" placeholder="0"></ion-input>
+          <ion-input type="text" placeholder="0"></ion-input>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" 
+          fill="solid" 
+          >SUBMIT</ion-button
+        >
+        <ion-button
+          expand="block"
+          fill="outline"
+          routerLink="/tabs/home2"
+          >CANCEL</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

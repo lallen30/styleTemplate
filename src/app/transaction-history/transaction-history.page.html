@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-icon slot="end" name="reload-outline" (click)="reload()"></ion-icon>
+    <ion-title>Transactions</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="main-container">
+    <p *ngIf="transaction_spinner == 'on'" style="margin: 0px; text-align: center">
+      <ion-spinner name="dots"></ion-spinner>
+    </p>
+    <ion-row class="recent-activity" *ngIf="transactions.length > 0">
+      <ion-col size="12" *ngFor="let item of transactions; let i = index" (click)="gotoHist(i)">
+        <ion-card>
+          <ion-thumbnail>
+            <img [src]="item.otherUserInfo.user_avatar" alt="" />
+          </ion-thumbnail>
+          <div class="user_name">
+            <h4 *ngIf="item.otherUserInfo.name != ''">
+              {{item.otherUserInfo.name}}
+            </h4>
+            <p *ngIf="item.otherUserInfo.name == ''">
+              {{item.otherUserInfo.email}}
+            </p>
+          </div>
+          <div class="ion-text-center" *ngIf="loginInfo.user_id == item.from_user">
+            <img width="15" src="assets/theme-icon/green-arrow.svg" alt="" />
+            <p>Send</p>
+          </div>
+          <div class="ion-text-center" *ngIf="loginInfo.user_id != item.from_user">
+            <img width="15" src="assets/theme-icon/red-arrow.svg" alt="" />
+            <p>Received</p>
+          </div>
+          <div class="item-price">
+            <h3>${{item.amount}}</h3>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row>
+            <ion-col size="12">
+                <p *ngIf="transaction_spinner == 'on'" style="margin: 0px; text-align: center;"><ion-spinner></ion-spinner></p>
+                <ion-list *ngIf="transactions.length > 0" class="transaction-history">
+                    <ion-item *ngFor="let item of transactions; let i = index" (click)="gotoHist(i)">
+                       
+                        <ion-thumbnail slot="start"><img [src]="item.otherUserInfo.user_avatar"></ion-thumbnail>
+                        <ion-label>
+                            <h3 *ngIf="item.otherUserInfo.name != ''">{{item.otherUserInfo.name}}</h3>
+                            <h3 *ngIf="item.otherUserInfo.name == ''">{{item.otherUserInfo.email}}</h3>
+                            <P *ngIf="loginInfo.user_id == item.from_user">You have sent money.</P>
+                            <p *ngIf="loginInfo.user_id != item.from_user">You have received money</p>
+                        </ion-label>
+                        <section class="request-amount" >
+                            <b>
+                                ${{item.amount}}
+                                <ion-icon *ngIf="loginInfo.user_id == item.from_user" name="trending-up-outline" color="success"></ion-icon>
+                                <ion-icon *ngIf="loginInfo.user_id != item.from_user" name="trending-up-outline" color="success" style="transform: rotate(180deg);"></ion-icon>
+                            </b>
+                        </section>
+                    </ion-item>
+
+                  
+                </ion-list>
+            </ion-col>
+        </ion-row> -->
+  </ion-grid>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

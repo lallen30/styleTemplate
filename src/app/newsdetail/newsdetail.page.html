@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>news feed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12">
+        <ion-img [src]="newsdata?.news_featured_image" alt=""></ion-img>
+        <h3>{{newsdata?.news_title}}</h3>
+        <h4>{{newsdata?.news_datetime}}</h4>
+        <p>{{newsdata?.news_fulldescription}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

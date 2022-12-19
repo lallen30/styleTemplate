@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>cash out</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12">
+        <ion-card class="cash_section ion-text-center">
+          <p>Wallet Balance</p>
+          <h3 *ngIf="!ready">
+            <ion-spinner name="dots"></ion-spinner>
+          </h3>
+          <h3 *ngIf="ready">{{wallet_balance | currency}}</h3>
+          <ion-icon *ngIf="ready" name="reload-outline" (click)="reload('wallet')"></ion-icon>
+        </ion-card>
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="center_title">How much would you like to Transfer?</h3>
+      </ion-col>
+      <ion-col size="12" class="mb-10">
+        <ion-item lines="none" class="item_field">
+          <!-- this input didn't work before I cleaned up this page. I didn't break it. -kwb -->
+          <ion-input [(ngModel)]="amount" (ionBlur)="onAmountChange($event)" value="{{amount2 | currency}}"
+            type="decimal" placeholder="$0"></ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="mb-10" *ngIf="!settingReady && showloading" class="ion-text-center">
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-col>
+      <ion-col size="12" class="mb-10" *ngIf="settingReady">
+        <ion-card color="primary">
+          <p class="field-label">Total Charge</p>
+
+          <ion-item lines="full">
+            <ion-label>
+              <p>Admin Fees :</p>
+            </ion-label>
+            <ion-chip slot="end" color="primary" fill="outline" *ngIf="fees_amount.admin_fees">
+              <ion-label>{{fees_amount.admin_fees | currency}}</ion-label>
+            </ion-chip>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label>
+              <p><strong>Total :</strong></p>
+            </ion-label>
+            <ion-badge slot="end" color="primary" *ngIf="fees_amount.total > 0">
+              <ion-label> {{fees_amount.total | currency}}</ion-label>
+            </ion-badge>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12" class="mb-10">
+        <p class="heading-label">Transfer To:</p>
+        <ion-item lines="none" class="item_field">
+          <h3 *ngIf="!account_ready">
+            <ion-spinner name="dots"></ion-spinner>
+          </h3>
+          <ion-select *ngIf="account_ready" [(ngModel)]="external_account">
+            <ion-select-option value="{{debit.id}}" *ngFor="let debit of account_listing.debit_cards">{{debit.funding |
+              titlecase}} **** **** {{debit.last4}}
+              ({{debit.brand}})</ion-select-option>
+
+            <ion-select-option value="{{bank.id}}" *ngFor="let bank of account_listing.bank_account">Bank ****
+              {{bank.last4}} ({{bank.bank_name}})</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12" class="mb-10" *ngIf="profile && profile.is_pin && profile.is_pin=='1'">
+        <p class="heading-label">Enter Your Pin to Confrm This Transfer</p>
+        <ion-item lines="none" class="item_field">
+          <ion-input [(ngModel)]="pin" [brmasker]="{mask:'0000', len:4}" type="password" class="ion-text-center">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="12">
+        <ion-button expand="block" class="theme-fill-btn mt-10" (click)="generateTransfer()" [disabled]="!settingReady">
+          TRANSFER</ion-button>
+        <ion-button expand="block" class="theme-outline-btn mt-15 mb-10" routerLink="/tabs/home2">CANCEL</ion-button>
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="title-content">Funds Available in 72 Hours Free!!!</h3>
+      </ion-col>
+      <!-- <ion-col size="12">
+        <ion-note>Instant Transfer $$ or %</ion-note>
+      </ion-col> -->
+    </ion-row>
+  </ion-grid>
+</ion-content>

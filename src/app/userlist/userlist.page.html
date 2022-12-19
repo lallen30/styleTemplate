@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon size="large" name="chevron-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Send</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-icon size="large" size="large" name="cash"></ion-icon>
+          <h3>$ {{number}}</h3>
+          <p>Transaction</p>
+        </ion-card>
+      </ion-col>
+
+      <ion-col size="12">
+        <p>For</p>
+        <ion-item lines="none">
+          <ion-input type="text" placeholder="Type here..."></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12" *ngIf="funding_source_spinner == 'off' && funding_sources_lists.length == 0">
+        <p>
+          Please add a funding source first.
+        </p>
+      </ion-col>
+      <ion-col size="12" *ngIf="spinner == 'on'">
+        <ion-spinner color="dark" name="crescent"></ion-spinner>
+      </ion-col>
+      <ion-col size="12" *ngIf="alluser.length > 0">
+        <h4>Recent Contacts</h4>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item *ngFor="let data of alluser; let i = index" lines="none">
+              <ion-thumbnail slot="start"><img [src]="data.user_avatar" /></ion-thumbnail>
+              <ion-label>
+                <h3>{{data.name}}</h3>
+                <h6>{{data.email}}</h6>
+                <p *ngIf="data.default_funding_source == false">
+                  {{data.funding_source_message}}
+                </p>
+              </ion-label>
+
+              <ion-radio *ngIf="data.default_funding_source != false" slot="end" mode="md" value="{{data.user_id}}"
+                (click)="select_user(i)"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+      <ion-col size="12">
+        <p *ngIf="spinner == 'off' && alluser.length == 0" style="text-align: center !important">
+          No user with this Account exists
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll *ngIf="alluser.length > 0" threshold="100px" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingText="Loading more users"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<ion-footer *ngIf="(funding_sources_lists.length > 0 && selected_userInfo.user_id ) ? true : false">
+  <ion-row>
+    <ion-col size="12">
+      <ion-button expand="block" fill="solid" (click)="pay_with_dwolla()">send</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

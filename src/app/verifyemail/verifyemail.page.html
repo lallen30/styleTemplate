@@ -1,0 +1,37 @@
+<ion-content>
+  <ion-grid class="main-container">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <img class="logo" src="/assets/images/logo2.png" />
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="title">Verify Email</h3>
+        <p class="subtitle mb-20">
+          We have sent a code to your email <span>{{sendData?.email}}</span>
+        </p>
+      </ion-col>
+      <ion-col size="12" class="mb-10">
+        <ion-item fill="solid" lines="none" class="item_field">
+          <!-- <input [(ngModel)]="o1" size="1" type="number" maxlength="4"> -->
+          <ion-label position="floating">Enter code</ion-label>
+          <ion-input [(ngModel)]="o1" placeholder="code" type="number"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="12">
+        <ion-button expand="block" class="theme-fill-btn" (click)="submit()"
+          >SUBMIT</ion-button
+        >
+      </ion-col>
+      <ion-col size="12">
+        <ion-button
+          expand="block"
+          class="theme-outline-btn mt-15"
+          (click)="back()"
+          >Go back</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer> </ion-footer>
